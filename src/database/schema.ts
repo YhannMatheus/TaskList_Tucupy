@@ -5,4 +5,3 @@ export const task = sqliteTable('task', {
   title: text(),
   description: text(),
   completed: int().default(0),});
-
