@@ -9,9 +9,9 @@ const client = createClient({ url : process.env.DATABASE_URL!});
 const db = drizzle({ client });
 
 
-export async function getTask(name: string){
+export async function getTask(title: string){
     // função para buscar uma task 
-    let task = await db.select({id : Task.id ,title: Task.title, description : Task.description}).from(Task).where(eq(Task.title, name));
+    let task = await db.select({id : Task.id ,title: Task.title, description : Task.description}).from(Task).where(eq(Task.title, title));
     if(task.length > 0){
         return task;
     }
@@ -37,28 +37,28 @@ export async function createTask(title: string, description: string){
     return null;
 }
 
-export async function deleteTask(name: string){
+export async function deleteTask(title: string){
     // função para deletar uma task
-    let task = await db.delete(Task).where(eq(Task.title, name));
+    let task = await db.delete(Task).where(eq(Task.title, title));
     
-    if(getTask(name) === null){
+    if(getTask(title) === null){
         return "Task_Deleted Successfully";
     }
     return null;
 }
 
-export async function updateTask(name: string, title: string, description: string){
+export async function updateTask(title: string, description: string){
     // função para atualizar uma task
     let task = {
         title: title,
         description: description
     }
     // verificação de existência da task
-    let verificationTask = getTask(name);
+    let verificationTask = getTask(title);
     if (verificationTask === null){
         return null;
     }
     // realização da atualização
-    await db.update(Task).set({title: task.title, description: task.description}).where(eq(Task.title, name));
+    await db.update(Task).set({title: task.title, description: task.description}).where(eq(Task.title, title));
     return task;
 }
