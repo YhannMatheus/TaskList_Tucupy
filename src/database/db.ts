@@ -47,9 +47,10 @@ export async function deleteTask(title: string){
     return null;
 }
 
-export async function updateTask(title: string, description: string){
+export async function updateTask(id:number, title: string, description: string){
     // função para atualizar uma task
     let task = {
+        id : id,
         title: title,
         description: description
     }
