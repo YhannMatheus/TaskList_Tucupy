@@ -3,16 +3,18 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/routes.ts"
   },
   "dependencies": {
+    "@elysiajs/swagger": "^1.2.2",
     "@libsql/client": "^0.14.0",
     "dotenv": "^16.4.7",
-    "drizzle-orm": "^0.40.0",
+    "drizzle-orm": "^0.40.1",
     "drizzle-typebox": "^0.3.0",
     "elysia": "latest"
   },
   "devDependencies": {
+    "@types/bun": "^1.2.5",
     "bun-types": "latest",
     "drizzle-kit": "^0.30.5",
     "tsx": "^4.19.3"
